@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+
+<html>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css"> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+
+    <body>
+
+
+        <div class="w3-row">
+            <div class="w3-col w3-container w3-light-blue" style="width:20%; height: 1450px;"></div>
+            <div class="w3-col w3-container w3-white" style="width:60%">
+                <div class="w3-bar w3-container w3-center w3-content w3-xlarge w3-white" >
+                    <nav>
+                        <a href="Home.html" class="w3-button w3-light w3-padding-32 w3-bar-item" >Inicio</a>   
+                        <a href="Premios.html" class="w3-button w3-padding-32 w3-bar-item" >Prémios</a>   
+                        <a href="SobreEsturjão.html" class="w3-button w3-padding-32 w3-bar-item" >Sobre o Esturjão</a>
+                        <a href="https://www.google.com/forms/about/" class="w3-button w3-padding-32 w3-bar-item" >Inscrições</a> 
+                    </nav>
+                </div>
+                <section class="w3-container w3-padding-32 w3-center w3-content" style="height: 800px; width: 100%;">
+                    <img class="Galeriaslides" src="Media/img1.jpg" style="max-height: 100%; max-width: 100%;">
+                    <img class="Galeriaslides" src="Media/img2.jpeg" style="max-height: 100%; max-width: 100%;">
+                    <img class="Galeriaslides" src="Media/img3.jpg" style="max-height: 100%; max-width: 100%;">
+                </section>
+                <section class="w3-container w3-center w3-content" style="max-width:800px">
+                    <h2 class="w3-wide w3-padding-16 w3-xxlarge">Torneio internacional de pesca do Esturjão</h2>
+                    <p class="w3-large w3-justify">No dia 30 de fevereiro de 2021 realiza-se na província de Esmirna o maior torneio de pesca de Esturjão a nível internacional. Serão atribuidos prémios aos três primeiros lugares.</p>
+                    <p class="w3-large w3-justify">Vão ser 3 dias da mais alta competição para encontrar o maior pescador de Esturjão em todo o mundo, não perca!</p>
+                </section>
+                
+        
+                <footer class="w3-container w3-padding-64 w3-center w3-white w3-xlarge">
+                    <a href="https://www.facebook.com/FPPDportugal/?fref=ts"><i class="fa fa-facebook-official"></i></a>
+                    <a href="https://www.youtube.com/user/FPPDesportiva"><i class="fa fa-youtube"></i></a>
+                    
+                </footer>
+        
+            </div>
+            <div class="w3-col w3-container w3-light-blue" style="width:20%; height: 1450px;"><div>
+        </div>
+
+
+    
+        <script>
+            // Caroussel slideshow 
+            var myIndex = 0;
+            carousel();
+            
+            function carousel() {
+              var i;
+              var x = document.getElementsByClassName("Galeriaslides");
+              for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+              }
+              myIndex++;
+              if (myIndex > x.length) {myIndex = 1}
+              x[myIndex-1].style.display = "block";
+              setTimeout(carousel, 3000);
+            }
+        </script>
+    </body>
+</html>

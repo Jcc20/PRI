@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT project_rec (main_title,content)>
+
+<!ELEMENT main_title (#PCDATA)>
+
+<!ELEMENT content (info,workteam,abstract,deliverables)>
+
+<!ELEMENT info (kname,title,subtitle?,bdate,edate,supervisor)>
+<!ELEMENT kname (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT subtitle (#PCDATA)>
+<!ELEMENT bdate (#PCDATA)>
+<!ELEMENT edate (#PCDATA)>
+<!ELEMENT supervisor (#PCDATA)>
+<!ATTLIST supervisor url CDATA #REQUIRED>
+
+<!ELEMENT workteam (worker+)>
+<!ELEMENT worker (wname,wnumber,wemail)>
+<!ELEMENT wname (#PCDATA)>
+<!ELEMENT wnumber (#PCDATA)>
+<!ELEMENT wemail (#PCDATA)>
+<!ATTLIST wemail url CDATA #REQUIRED>
+
+<!ELEMENT abstract (paragraph+)>
+<!ELEMENT paragraph (#PCDATA|bold|italic|underline|link)*>
+<!ELEMENT bold (#PCDATA)>
+<!ELEMENT italic (#PCDATA)>
+<!ELEMENT underline (#PCDATA)>
+<!ELEMENT link (int_link|ext_link)*>
+<!ELEMENT int_link (#PCDATA)>
+<!ATTLIST int_link href CDATA #REQUIRED>
+<!ELEMENT ext_link (#PCDATA)>
+<!ATTLIST ext_link url CDATA #REQUIRED>
+
+<!ELEMENT deliverables (link)*>
+
+
+
+

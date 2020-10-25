@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project_rec SYSTEM "TPC2.dtd">
+<project_rec>
+    <main_title>Project Record</main_title>
+    <content>
+        <info>
+            <kname>PRI2020_TPC2</kname>
+            <title>TPC2</title>
+            <subtitle>TPC2</subtitle>
+            <bdate>19-10-2020</bdate>
+            <edate>26-10-2020</edate>
+            <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+        </info>
+        <workteam>
+            <worker>
+                <wname>João da Cunha e Costa</wname>
+                <wnumber>A84775</wnumber>
+                <wemail url="a84775@alunos.uminho.pt">a84775@alunos.uminho.pt</wemail>
+            </worker>
+        </workteam>
+        <abstract>
+            <paragraph>Produção de uma dtd no âmbito da cadeira de PRI</paragraph>
+        </abstract>
+        <deliverables>
+            <link><ext_link url="http://www4.di.uminho.pt/~jcr/PROJS/micei2002/guilherme/ped_micei2002.html">Report (HTML version)</ext_link></link>
+        </deliverables>
+    </content>
+</project_rec>
