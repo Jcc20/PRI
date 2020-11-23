@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "file:/C:/Users/Zezoca/Desktop/Uni/4%C2%BA%20ano/PLC/PRI/TPC4/proj_record.dtd">
+<pr>
+    <meta>
+        <key>TPC6</key>
+        <title>Servidor Node.js + single page de todo list</title>
+        <bdate>16-Nov-2020</bdate>
+        <edate>23-Nov-2020</edate> 
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <workteam num="a84775">
+        <worker>
+            <name>João da Cunha e Costa</name>
+            <email>a84775@alunos.uminho.pt</email>
+        </worker>
+    </workteam>
+    <abstract>  
+        <p>
+            De modo a forma conhecimentos sobre servidores em <i>Node.js</i>, foi desenvolvido um servidor que responde a pedidos <i>HTTP</i>, respondendo com uma página <i>HTML</i> com uma <i>"To-Do List"</i> do utilizador.
+        </p>    
+        </abstract>
+    <derivables>
+        <link url="https://github.com/Jcc20/PRI2020/tree/master/TPC6">Código do projeto</link>
+    </derivables>
+</pr>

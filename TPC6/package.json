@@ -1,0 +1,15 @@
+{
+  "name": "aula6",
+  "version": "1.0.0",
+  "description": "server aula6",
+  "main": "server-skeleton-1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server-skeleton-1.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0"
+  }
+}

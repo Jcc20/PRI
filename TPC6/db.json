@@ -1,0 +1,46 @@
+{
+  "tarefas": [
+    {
+      "responsavel": "Quim",
+      "descricao": "Acabar tpc de PRI",
+      "dataL": "2020-11-23T00:14",
+      "resolvido": "true",
+      "id": "1"
+    },
+    {
+      "responsavel": "Cunha",
+      "descricao": "Terminar tarefa 2 do trabalho de SSI",
+      "dataL": "2020-11-22T00:14",
+      "resolvido": "true",
+      "id": "2"
+    },
+    {
+      "responsavel": "Filipa",
+      "descricao": "Terminar tarefa 1 do trabalho de SSI",
+      "dataL": "2020-11-22T00:14",
+      "resolvido": "false",
+      "id": "3"
+    },
+    {
+      "responsavel": "João",
+      "descricao": "Acabar tpc",
+      "dataL": "2020-11-22T00:00",
+      "resolvido": "false",
+      "id": "4"
+    },
+    {
+      "responsavel": "quim",
+      "descricao": "lavar loiça",
+      "dataL": "2020-11-22T00:00",
+      "resolvido": "false",
+      "id": "5"
+    },
+    {
+      "responsavel": "João",
+      "descricao": "Acabar tpc 2",
+      "dataL": "2020-12-22T00:00",
+      "resolvido": "false",
+      "id": "6"
+    }
+  ]
+}
