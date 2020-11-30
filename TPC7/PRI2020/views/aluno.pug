@@ -1,0 +1,34 @@
+extends layout
+block content
+    .w3-card-4
+      header.w3-container.w3-teal
+        h3 Aluno: #{aln.Número} 
+      if aln   
+       ul
+        li
+          b Número: #{aln.Número} 
+        li
+          b Nome: #{aln.Nome} 
+        li
+          b Git: 
+            a(href=`${aln.Git}`) #{aln.Git}
+         
+        li 
+          b TPS:
+          if aln.tpc.length > 0
+            ol
+              each tp in aln.tpc
+                if tp==1
+                  li 
+                    | Entregue 
+                else
+                  li 
+                    | Não entregue 
+          else
+           | Não submeteu nenhum tp
+      else
+        div(class="w3-container")
+          p  Aluno não registado...
+          
+      footer(class="w3-container w3-teal")
+        address Gerado por A84775 :: 2020-Novembro

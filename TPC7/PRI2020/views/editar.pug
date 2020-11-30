@@ -1,0 +1,38 @@
+extends layout
+block content
+    .w3-card-4
+      header.w3-container.w3-teal
+        h3 Editar Aluno
+      br
+      form(method='POST', action =`/alunos/${aln.Número}?_method=PUT`)
+        label(style="padding-right: 18px;padding-left: 20px")
+         b Número:
+        input.form-control(name='Número', type='text', value=`${aln.Número}`, readonly)
+        p
+        label(style="padding-right: 35px;padding-left: 20px")
+         b Nome:
+        input.form-control(name='Nome', type='text',value=`${aln.Nome}`)
+        p
+        label(style="padding-right: 60px;padding-left: 20px")
+         b Git:
+        input.form-control(name='Git', type='text',value=`${aln.Git}`)
+        p
+        label(style="padding-left: 20px")
+         b Tps:
+         
+         br
+         - var i=1  
+        while i<10
+         label(style="padding-left: 110px")
+          if aln.tpc[i-1]
+            input(type="checkbox" name=`tpc${i}` checked) 
+          else 
+            input(type="checkbox" name=`tpc${i}`)
+          |   
+          | Trabalho prático #{i}
+         br
+         - i++
+        br
+        input.btn.btn-primary(type='submit',value='Submit')
+      footer(class="w3-container w3-teal")
+        address Gerado por A84775 :: 2020-Novembro
