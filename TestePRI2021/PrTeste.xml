@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pr SYSTEM "proj_record.dtd">
+<pr>
+    <meta>
+        <key>TPC7</key>
+        <title>Servidor Node.js + base de bados em mongo</title>
+        <bdate>23-Nov-2020</bdate>
+        <edate>30-Nov-2020</edate> 
+        <supervisor url="http://www4.di.uminho.pt/~jcr/">José Carlos Ramalho</supervisor>
+    </meta>
+    <workteam num="a84775">
+        <worker>
+            <name>João da Cunha e Costa</name>
+            <email>a84775@alunos.uminho.pt</email>
+        </worker>
+    </workteam>
+    <abstract>  
+        <p>
+            De modo a forma conhecimentos sobre servidores em <i>Node.js</i>, foi desenvolvido um servidor que responde a pedidos <i>HTTP</i>, respondendo com uma página <i>HTML</i>(geradas utilizando <i>PUG</i>) com dados de uma base de dados em mongodb , utilizando o Express.
+        </p>    
+        </abstract>
+    <derivables>
+        <link url="https://github.com/Jcc20/PRI2020/tree/master/TPC7">Código do projeto</link>
+    </derivables>
+</pr>
