@@ -1,0 +1,122 @@
+extends layout 
+
+block content
+  
+  div(style="font-size: 16px; width: 75rem; margin: auto")
+    p(style="text-align: center; font-size:22px; font-weight: bold") POSTS
+    br
+    form(action='/posts' style=" text-align: center;")
+      input(type='text' placeholder='Procurar..' name='search')
+      button.w3-blue(type='submit')
+         i.fa.fa-search.w3-large.w3-text-white
+
+    br
+
+    each post in posts 
+
+     .w3-container
+      .w3-container-card-4
+        header.w3-container.w3-blue(style="border-radius: 5px 5px 0 0;")
+          div(style="margin-top:10px;margin-bottom:10px;")
+            a(href="/perfil/"+post.autor.emailA  style="font-weight: bold;color:white;")  #{post.autor.nomeA}
+            |
+            |
+            i.fa.fa-arrow-right 
+            |
+            |
+            a(href="/recursos/"+post.rec.idRec  style="font-weight: bold;color:white;") #{post.rec.titRec}
+            div(style="float:right;")
+              if level=="admin"
+                i(type="button" class="w3-xlarge material-icons" onclick="document.getElementById('"+post._id+"').style.display='block'") cancel
+              else if post.autor.emailA==email
+                i(type="button" class="w3-xlarge material-icons" onclick="document.getElementById('"+post._id+"').style.display='block'") cancel   
+      
+      div(class="w3-modal" id=post._id)
+       .w3-modal-content(action='/posts/remover/'+post._id style="width:40rem;")
+        .w3-container
+          h1(style="margin-top:15px") Remover Post
+          p Tem a certeza que deseja remover o post?
+            .clearfix
+             a(href="/posts" style="margin-left:10px")  
+               button.w3-btn.w3-blue Cancelar
+             |
+             |
+             a(href="/posts/remover/"+post._id style="margin-left:10px")  
+               button.w3-btn.w3-blue Remover  
+             
+
+
+      .w3-container.w3-border-blue.w3-light-grey
+        h3.w3-center(style="margin-top:10px") #{post.titulo}
+        p(style="margin-top:10px") #{post.descricao}
+        a(href="/recursos/"+post.rec.idRec style="float:right;font-weight: bold;margin-bottom:6px;color:grey") Sobre o recurso   
+
+
+      footer.w3-container.w3-light-grey 
+        .w3-container.w3-border-bottom.w3-border-top.w3-border-black
+          if post.comentarios.length>0
+            .w3-btn(style="box-shadow:none;" onclick='show("'+post.titulo+'")') Ver Comentários
+          h5(style="float: right;margin-top:10px") Escrito em: #{post.dataRegisto.split("T")[0]}
+
+      
+      div(id=post.titulo , style="display: none;font-size:14px")
+       .w3-container.w3-light-grey
+         .w3-container.w3-border-bottom.w3-border-black(style="witdh:60%")
+           br
+           each coment in post.comentarios                  
+                
+                div(class="w3-modal" id=coment._id )
+                 .w3-modal-content(action="/posts/remover/"+post._id+"/comentario/"+coment._id style="width:40rem;")
+                   .w3-container
+                     h1(style="margin-top:15px") Remover Comentáro
+                     p Tem a certeza que deseja remover o comentário?
+                       .clearfix
+                        a(href="/posts" style="margin-left:10px")  
+                          button.w3-btn.w3-blue Cancelar
+                        |
+                        |
+                        a(href="/posts/remover/"+post._id+"/comentario/"+coment._id style="margin-left:10px")  
+                          button.w3-btn.w3-blue Remover  
+                
+                .w3-container.w3-white(style="border-radius: 25px;")
+                  div(style="float:right;margin-top:5px")
+                    if level=="admin"
+                      i(type="button" class="w3-xlarge material-icons" onclick="document.getElementById('"+coment._id+"').style.display='block'") cancel
+                    else if coment.emailC==email
+                      i(type="button" class="w3-xlarge material-icons" onclick="document.getElementById('"+coment._id+"').style.display='block'") cancel
+                  h4(style="margin-top:10px") 
+                    a(href="/perfil/"+coment.emailC  style="font-weight: bold;color:black;") #{coment.nomeC}
+                  p #{coment.comentario}
+                  h6(style="float: right") Escrito em: #{coment.dataC.split("T")[0]}, #{coment.dataC.split("T")[1].split(".")[0]}
+                br
+      
+                   
+      
+      .w3-container.w3-light-grey(style="border-radius: 0 0 5px 5px ;")
+        br
+        form(class="w3-container" action='/posts/comentario/'+post._id, method='POST')
+            input(style="font-size:14px;margin-left:10px;width: 96%;" class="w3-input w3-border", type="text", name="comentario", placeholder="Escreve um comentário...")
+             
+        br
+
+      br
+      br
+      br
+      br
+
+
+
+    script.
+       function show(id) {
+       var x = document.getElementById(id);
+       if (x.style.display === "none") {
+       x.style.display = "block";
+       } else {
+       x.style.display = "none";
+       }
+       }
+
+       function showImage(){
+        $("#display").empty()
+        $("#display").modal()
+       }

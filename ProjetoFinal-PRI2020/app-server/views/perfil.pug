@@ -1,0 +1,35 @@
+extends layout
+
+block content
+
+ link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto')
+
+ div(style="font-size: 18px; font-family: Roboto")
+   br
+   .w3-row-padding
+    .w3-content.w3-margin-top(style='max-width:1400px;')
+        div(style="margin: auto; width: 25%;")
+          .w3-white.w3-text-grey.w3-card-4
+            .w3-display-container.w3-blue.w3-xlarge
+              p(style="text-align: center")  Perfil 
+            .w3-container
+              p
+                i.fa.fa-user.fa-fw.w3-margin-right.w3-large.w3-text-blue
+                | #{utilizador.nome}
+              hr
+              p
+                i.fa.fa-briefcase.fa-fw.w3-margin-right.w3-large.w3-text-blue
+                | #{utilizador.filiacao}
+              hr
+              p
+                i.fa.fa-envelope.fa-fw.w3-margin-right.w3-large.w3-text-blue
+                | #{utilizador.email}
+              hr
+              p
+                i.fa.fa-calendar.fa-fw.w3-margin-right.w3-large.w3-text-blue
+                | #{utilizador.dataRegisto}
+          br
+        .w3-center
+          if tag
+            a(href="/perfil/editar")
+               button.w3-btn.w3-blue Editar

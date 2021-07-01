@@ -1,0 +1,203 @@
+extends layout
+
+
+block content
+
+ link(href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet")
+
+ div(style="font-size: 14px; width: 85%; margin: auto")
+ 
+  .w3-card-4
+     header.w3-container.w3-blue
+      h1(style="text-align:center; font-weight: bold") #{recurso.titulo}
+  .w3-container  
+    
+    br
+    p(style="text-align:center;  font-size:18px;") #{recurso.subtitulo} 
+    
+    if recurso.visibilidade==true
+      div(style="float:right; margin-right:10px; ") 
+        .w3-btn(style="border: 2px solid black;" onclick='addPost("1")') Escrever Post 
+          i.material-icons(style="font-size: 22 px; margin-right:10px; vertical-align:-24%") add_circle_outline
+      
+    
+    div(id=1, style="float:right; margin-top:80px; font-size:14px; width: 40rem; display: none;")
+      .w3-card-4.w3-light-grey
+        form(class="w3-container" action='/posts/'+recurso._id, method='POST')
+            label(class="w3-text-black" style="margin-top:20px")
+             b Título:
+            input(class="w3-input w3-border", type="text", name="titulo", required)   
+
+            label(class="w3-text-black")
+             b Descrição:
+            textarea#w3review(name="descricao" rows='7' cols='54', required) 
+
+            button(style="position: relative; left:40%; margin-top:20px;margin-bottom:20px" class="w3-btn w3-blue" type="submit") Postar 
+            
+      
+
+    div(style="font-size:16px; float: left; padding: 90px 0;") 
+      
+      table(class="w3-table-all")
+        tr
+          td.w3-blue Data de Criação:
+          td= recurso.dataCriacao.split("T")[0]
+        tr 
+          td.w3-blue Data de Registo:
+          td= recurso.dataRegisto.split("T")[0]
+        tr 
+          td.w3-blue Rating:
+          if voted == 1
+            if recurso.ranking
+             td
+              d  #{recurso.ranking.rating}/10 de #{leng.leng} avaliações
+            else
+             td= NaN
+          else 
+            td    
+             form(class="w3-container" action='/recursos/classificar/'+recurso._id, method='POST')
+                  if recurso.ranking.rating
+                       d(style="margin-left: -15px; margin-right: 35px") #{recurso.ranking.rating}/10 de #{leng.leng}
+                  else
+                       d(style="margin-left: -15px; margin-right: 35px") Sem classificação
+                  select(name='rating')
+                    option(value='0') Selecione um rating:
+                    option(value='1') 1
+                    option(value='2') 2
+                    option(value='3') 3
+                    option(value='4') 4
+                    option(value='5') 5
+                    option(value='6') 6
+                    option(value='7') 7
+                    option(value='8') 8
+                    option(value='9') 9
+                    option(value='10') 10
+                  input.w3-btn.w3-blue(type='submit' for='rating'  style='font-size:12px;margin-left:15px' value='Submeter')              
+        tr 
+          td.w3-blue Produtor:
+          td= recurso.produtor.nomeP
+        tr 
+          td.w3-blue Email do produtor:
+          td= recurso.produtor.emailP
+        if tag  
+          tr 
+            td.w3-blue Visibilidade:
+            td 
+              form(id="formname" class="w3-container" action='/recursos/visibilidade/'+recurso._id, method='POST')
+                d(style="margin-right:10px; margin-left:-14px") Privado
+                if recurso.visibilidade==false
+                  label.switch
+                    input(type='checkbox' onChange="this.form.submit()")
+                    span.slider.round
+                else
+                  label.switch
+                    input(type='checkbox' checked onChange="this.form.submit()")
+                    span.slider.round
+                d(style="margin-left:10px") Público
+      
+
+
+     
+      div(style="margin-top:40%; display:flex")
+        if tag
+          button.w3-btn.w3-blue(onclick="document.getElementById('id01').style.display='block'") Remover
+
+          div(class="w3-modal" id="id01" )
+            .w3-modal-content(action='/recurso/remover/'+recurso._id style="width:40rem;")
+              .w3-container
+               h1(style="margin-top:15px") Remover Recurso
+               p Tem a certeza que deseja remover o recurso?
+                 .clearfix
+                  a(href="/recursos/"+recurso._id style="margin-left:10px")  
+                    button.w3-btn.w3-blue Cancelar
+                  |
+                  |
+                  a(href="/recursos/remover/"+recurso._id style="margin-left:10px")  
+                    button.w3-btn.w3-blue Remover
+
+        a(href="/download/"+recurso.path style="text-decoration:none;")
+          .w3-btn.w3-border.w3-round-xlarge(style="text-decoration: none; color: grey; margin-left:15px; ") Download
+            i.material-icons.md-18(style="vertical-align:-21%; margin-left:10px") archive    
+
+
+    script.
+       function addPost(id) {
+       var x = document.getElementById(id);
+       if (x.style.display === "none") {
+       x.style.display = "block";
+       } else {
+       x.style.display = "none";
+       }
+       }
+       function showImage(){
+        $("#display").empty()
+        $("#display").modal()
+       }
+
+       $(document).ready(function(){
+          $("#formname").on("change", "input:checkbox", function(){
+          $("#formname").submit();
+          });
+       }); 
+
+
+    style.
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 56px;
+          height: 28px;
+        }
+        
+        .switch input { 
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+        
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+        
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 20px;
+          width: 20px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+        
+        input:checked + .slider {
+          background-color: #2196F3;
+        }
+        
+        input:focus + .slider {
+          box-shadow: 0 0 1px #2196F3;
+        }
+        
+        input:checked + .slider:before {
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(26px);
+        }
+        
+        /* Rounded sliders */
+        .slider.round {
+          border-radius: 34px;
+        }
+        
+        .slider.round:before {
+          border-radius: 50%;
+        }

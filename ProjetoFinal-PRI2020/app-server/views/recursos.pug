@@ -1,0 +1,76 @@
+extends layout
+
+block content
+
+ div(style="font-size: 14px; width: 85%; margin: auto")
+
+  div(style="float: right")
+    a(href="/recursos/upload" style="text-decoration: none; color:black")
+      i.material-icons(style="font-size: 28px; margin-right:20px; vertical-align:-24%") add_circle_outline
+      
+  div(style="display: flex")
+    p(style="margin-left: 10px; font-size:20px; font-weight: bold") Recursos Educativos 
+      form(action='/recursos' style="margin-top:5px; margin-left:10px")
+        input(type='text' placeholder='Procurar...' name='search')
+        button.w3-blue(type='submit')
+          i.fa.fa-search.w3-large.w3-text-white
+  
+  table(class="w3-table-all")
+        tr.w3-blue
+            th
+              a(href='/recursos?byTipo=true' , style="text-decoration:none; color:white") Tipo
+            th 
+              a(href='/recursos?byTitulo=true' , style="text-decoration:none; color:white") Titulo
+            th(style="text-align:center")
+              a(href='/recursos?byClassif=true', style="text-decoration:none; color:white") Classificação
+            th(style="text-align:center")
+              a(href='/recursos?byData=true' , style="text-decoration:none; color:white") Data de Criação
+            th(style="text-align:center") 
+              a(href='/recursos?byAutor=true' , style="text-decoration:none; color:white") Autor
+            th  
+        each r in recursos
+            tr
+                td= r.tipo
+                td
+                  a(href='/recursos/' + r._id) #{r.titulo}
+                td(style="text-align:center")
+                  if r.ranking.rating
+                    d #{r.ranking.rating}/10
+                  else
+                    d Sem classificação  
+                td(style="text-align:center; width:150px")= r.dataCriacao.split("T")[0]
+                td(style="text-align:center")= r.produtor.nomeP
+                td 
+                  a(href="/download/"+r.path)
+                    div(style="text-decoration: none; color: black")
+                      i.material-icons.md-18(style="vertical-align:-14%") archive
+  div(role='navigation' aria-label='Main')
+
+    ul.pagination
+
+      if pag.previous
+
+        li.page-item
+          a.page-link(href='/recursos?'+pag.query+'&page='+pag.previous+'&limit='+pag.limit) Previous
+      
+        li.page-item
+          a.page-link(href='/recursos?'+pag.query+'&page='+pag.previous+'&limit='+pag.limit) #{pag.previous}
+      
+      else
+        li.page-item.disabled
+          a.page-link Previous
+
+      li.page-item.active(aria-current="page")
+        a.page-link #{pag.atual}
+
+      if pag.next
+
+        li.page-item
+          a.page-link(href='/recursos?'+pag.query+'&page='+pag.next+'&limit='+pag.limit) #{pag.next}
+
+        li.page-item
+          a.page-link(href='/recursos?'+pag.query+'&page='+pag.next+'&limit='+pag.limit) Next
+      else
+        li.page-item.disabled
+          a.page-link Next
+  

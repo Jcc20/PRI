@@ -1,0 +1,46 @@
+extends layout
+
+block content
+
+ div(style="font-size: 14px; margin-top: -25px")
+   
+  #wrapper.d-flex
+
+   #sidebar-wrapper.border-right.bg-light
+    .list-group.list-group-flush
+      a.list-group-item.list-group-item-action.bg-light(href='/posts') Posts
+      a.list-group-item.list-group-item-action.bg-light(href='/recursos') Recursos
+      a.list-group-item.list-group-item-action.bg-light(href='/perfil') Perfil
+
+   #page-content-wrapper
+    nav.navbar.navbar-expand-lg
+      button#menu-toggle.material-icons(style="position: absolute; left:0px") list
+   
+    .container-fluid
+      div(style="width: 70%; margin: auto")
+
+        p(style="margin-left: 2%; font-size:22px; font-weight: bold") Noticias 
+ 
+        table(class="w3-table-all")
+         each r in noticias
+            tr
+              if r.tipo
+                td= "Foi adicionado um novo recurso por " + r.produtor.nomeP + "!"
+                td= r.dataRegisto.split("T")[0]
+                td
+                  a(href='/recursos/' + r._id) Ver Mais 
+              else 
+                td= "Foi adicionado um novo post por " + r.autor.nomeA + "!"
+                td= r.dataRegisto.split("T")[0]
+                td
+                  a(href='/posts/' + r._id) Ver Mais
+                
+
+ script(src='vendor/jquery/jquery.min.js')
+ script(src='vendor/bootstrap/js/bootstrap.bundle.min.js')
+
+ script.
+   $("#menu-toggle").click(function(e) {
+   e.preventDefault();
+   $("#wrapper").toggleClass("toggled");
+   });

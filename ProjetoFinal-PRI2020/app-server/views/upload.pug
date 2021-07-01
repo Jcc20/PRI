@@ -1,0 +1,49 @@
+extends layout 
+
+block content
+  div(style="font-size: 14px; width: 50rem; margin: auto")
+    .w3-card-4
+     header.w3-container.w3-blue
+      h1 Upload
+    .w3-container
+
+    br
+    form(class="w3-container" action='/recursos', method='POST', enctype="multipart/form-data")
+      label(class="w3-text-black")
+       b Titulo:
+      input(class="w3-input w3-border w3-light-grey", type="text", name="titulo", required)    
+
+      label(class="w3-text-black")
+       b Tipo:
+      input(class="w3-input w3-border w3-light-grey", type="text", name="tipo", required)    
+
+      label(class="w3-text-black") 
+       b Subtitulo:
+      input(class="w3-input w3-border w3-light-grey", type="text", name="subtitulo") 
+     
+      label(class="w3-text-black") 
+       b Data de criacao:
+      input(class="w3-input w3-border w3-light-grey", type="date", name="dataCriacao", required) 
+            
+      label(class="w3-text-black") 
+       b Visibilidade:
+      br
+      input(type="radio",  name="visibilidade", value='1', checked) 
+      label(for="visibilidade") Público
+
+      input(style="margin-left: 10px",type="radio",  name="visibilidade", value='0') 
+      label(for="visibilidade") Privado
+      br
+
+ 
+      #label
+        input.w3-input.w3-border.w3-light-grey(style='margin:10px' type='file' name='myFile' multiple required)
+      
+      input.w3-btn.w3-blue(type='submit' style='margin:10px' value='Submeter')
+      a.w3-btn.w3-blue(href='/recursos' type='button' style="text-decoration:none")  Cancelar 
+
+
+
+
+
+
